@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<!-- Add Book Form -->
+<div class="unique-card p-4 mb-4">
+    <h3 class="mb-3">Add New Book</h3>
+    <form action="{{ url_for('admin') }}" method="post">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="col-md-6">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" class="form-control" id="author" name="author">
+            </div>
+            <div class="col-md-6">
+                <label for="price" class="form-label">Price (₹)</label>
+                <input type="number" step="0.01" class="form-control" id="price" name="price" required>
+            </div>
+            <div class="col-md-6">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" class="form-control" id="stock" name="stock" required>
+            </div>
+            <div class="col-md-12">
+                <label for="cover_image" class="form-label">Cover Image Filename</label>
+                <input type="text" class="form-control" id="cover_image" name="cover_image" placeholder="e.g., book_title.jpg">
+            </div>
+        </div>
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary-unique">Add Book</button>
+        </div>
+    </form>
+</div>
+
+<!-- Book Management Table -->
+<div class="unique-card p-4">
+    <h3 class="mb-3">Book Management</h3>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>₹{{ book.price }}</td>
+                    <td><span class="badge {{ 'bg-danger' if book.stock < 10 else 'bg-success' }}">{{ book.stock }}</span></td>
+                    <td>
+                        <a href="#" class="btn btn-outline-unique btn-sm me-2">Edit</a>
+                        <a href="{{ url_for('delete_book', book_id=book.id) }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

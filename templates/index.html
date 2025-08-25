@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<header class="hero-section text-center py-5">
+    <div class="container">
+        <h1 class="display-4 font-serif text-white">Find Your Next Great Read</h1>
+        <p class="lead text-white-50">Explore a world of stories, knowledge, and adventure.</p>
+        <form class="d-flex justify-content-center mt-4" method="GET" action="{{ url_for('index') }}">
+            <input class="form-control me-2 w-50" type="search" name="q" placeholder="Search for books, authors..." aria-label="Search" value="{{ search_query }}">
+            <button class="btn btn-primary-unique" type="submit">Search</button>
+        </form>
+    </div>
+</header>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-4 text-center">New Arrivals</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            {% for book in new_arrivals %}
+            <div class="col">
+                <div class="card h-100 unique-card text-center book-card-animation">
+                    <div class="card-body" style="background-color: {{ card_colors[loop.index0 % card_colors|length] }};">
+                        <h5 class="card-title book-title-design">{{ book.title }}</h5>
+                        <p class="card-text text-muted">{{ book.author }}</p>
+                        <p class="card-text fw-bold">₹{{ book.price }}</p>
+                    </div>
+                    <div class="card-footer unique-card-footer border-0">
+                        <a href="{{ url_for('add_to_cart', book_id=book.id) }}" class="btn btn-primary-unique btn-sm w-100 animated-button">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-4 text-center">Bestsellers</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            {% for book in bestsellers %}
+            <div class="col">
+                <div class="card h-100 unique-card text-center book-card-animation">
+                    <div class="card-body" style="background-color: {{ card_colors[loop.index0 % card_colors|length] }};">
+                        <h5 class="card-title book-title-design">{{ book.title }}</h5>
+                        <p class="card-text text-muted">{{ book.author }}</p>
+                        <p class="card-text fw-bold">₹{{ book.price }}</p>
+                    </div>
+                    <div class="card-footer unique-card-footer border-0">
+                        <a href="{{ url_for('add_to_cart', book_id=book.id) }}" class="btn btn-primary-unique btn-sm w-100 animated-button">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

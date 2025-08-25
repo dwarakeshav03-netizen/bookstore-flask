@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #081730; /* Deep Blue */
+    --accent-color: #FF5A5F; /* Coral */
+    --background-light: #E8F4F8; /* Light Sky Blue */
+    --text-color: #2D3A4B; /* Dark Slate */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans-serif: 'Lato', sans-serif;
+    --color-light-blue-gray: #D1E1E9;
+}
+
+body {
+    font-family: var(--font-sans-serif);
+    background-color: var(--background-light);
+    color: var(--text-color);
+    background-image: linear-gradient(135deg, var(--background-light) 0%, var(--color-light-blue-gray) 100%);
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    color: var(--primary-color);
+}
+
+.unique-card {
+    border: none;
+    border-radius: 15px;
+    background-color: #0b0a0a18;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.unique-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.item-list-container {
+    padding: 2rem;
+}
+
+.cart-summary {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.cart-item {
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    background-color: #E6EBF0;
+    color: var(--text-color);
+}
+
+.cart-item:hover {
+    transform: translateX(10px) scale(1.02);
+    background-color: #d8d8d8;
+}
+
+/* Decorative Buttons */
+.btn-primary-unique {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 90, 95, 0.4);
+}
+
+.btn-primary-unique:hover {
+    background-color: #e65257;
+    border-color: #e65257;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 90, 95, 0.6);
+}
+
+.btn-outline-unique {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.btn-outline-unique:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Decorative Hero Section and Images */
+.hero-section {
+    background: linear-gradient(45deg, var(--primary-color), #275283);
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section input[type="search"] {
+    border-radius: 50px;
+    padding: 0.75rem 1.5rem;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: contain;
+    border-bottom: 1px solid #f0f0f0;
+    transition: transform 0.3s ease;
+}
+
+.card-img-top:hover {
+    transform: scale(1.05);
+}
+
+/* New Decorative Styles */
+.layered-card {
+    position: relative;
+    padding: 2.5rem;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    z-index: 2;
+}
+
+.layered-card::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: -15px;
+    bottom: -15px;
+    background-color: var(--accent-color);
+    border-radius: 20px;
+    z-index: 1;
+    opacity: 0.2;
+    transform: rotate(3deg);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.layered-card:hover {
+    transform: translateY(-10px);
+}
+
+.layered-card:hover::before {
+    transform: rotate(0deg);
+    opacity: 0.3;
+}
+
+.animated-button {
+    animation: bounceIn 1.5s ease-out;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.1); opacity: 0; }
+    60% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+.card-hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Decorative book title design */
+.book-title-design {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+}
